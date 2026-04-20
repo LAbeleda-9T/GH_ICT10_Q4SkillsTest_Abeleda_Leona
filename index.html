@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.7.3/core.js"></script>
+    
+    <title>Attendance Tracker</title>
+
+    <py-config>
+        packages = ["numpy", "matplotlib"]
+    </py-config>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 700px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-size: 14px;
+            color: #444;
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        select:focus, input:focus {
+            border-color: #a67c52;
+            box-shadow: 0 0 5px rgba(166,124,82,0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #2F3E46;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #52796F;
+        }
+
+        #output {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        #graph-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>Attendance Tracker</h2>
+
+        <label>Select Day:</label>
+        <select id="day">
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+        </select>
+
+        <label>Absences:</label>
+        <input type="number" id="absences">
+
+        <button py-click="add_data">Submit</button>
+        <button py-click="show_graph">Show Graph</button>
+
+        <div id="output"></div>
+    </div>
+
+    <!-- Graph appears OUTSIDE the card -->
+    <div id="graph-container"></div>
+
+    <py-script src="main.py"></py-script>
+
+</body>
+</html>
